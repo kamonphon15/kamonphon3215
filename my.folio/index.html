@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio นักเรียน ม.3 | ยื่นสอบ ม.4</title>
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --surface: #ffffff;
+      --text: #102a43;
+      --muted: #526a7a;
+      --primary: #0f66da;
+      --accent: #1f8cff;
+      --border: #d6e7ff;
+      --shadow: 0 20px 50px rgba(16, 42, 67, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    header {
+      padding: 2.5rem 0 1.5rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      gap: 1.75rem;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(15, 102, 218, 0.08), rgba(255, 255, 255, 0));
+      border: 1px solid rgba(15, 102, 218, 0.18);
+      border-radius: 24px;
+      padding: 2rem;
+      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-avatar {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background: #cfe5ff;
+      border: 3px solid #d9efff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 0 0 0.5rem;
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .hero-text {
+      margin: 0.75rem 0 0;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+      border-top: 1px solid #e5eff8;
+    }
+
+    .section-title {
+      margin: 0 0 1.5rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .grid-2,
+    .activity-grid,
+    .contact-grid,
+    .gallery {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card,
+    .contact-item,
+    .gallery-card,
+    .activity-card {
+      background: var(--surface);
+      border: 1px solid #e4effb;
+      border-radius: 24px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: #eaf3ff;
+      color: var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .list-bullet {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .list-bullet li::before {
+      content: "•";
+      color: var(--primary);
+      display: inline-block;
+      width: 1rem;
+    }
+
+    .skill-item {
+      display: grid;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .progress {
+      height: 0.6rem;
+      border-radius: 999px;
+      background: #e7f1ff;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .gallery-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem;
+    }
+
+    .gallery-thumb {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 16px;
+      background: #d8e9ff;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .activity-card {
+      min-height: 12rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .footer {
+      padding: 1.5rem 0 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 720px) {
+      .hero {
+        grid-template-columns: 1.35fr 0.9fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .activity-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .contact-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding: 1.25rem 0;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="nav">
+      <div>
+        <p style="margin:.2rem 0 .25rem;font-size:.9rem;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.1em;">Portfolio ยื่น ม.4</p>
+        <h1 style="margin:0;font-size:1.15rem;">นักเรียน ม.3 | สายวิทย์-คณิต</h1>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Awards</a>
+        <a href="#activities">Activities</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="badge">Student Portfolio</div>
+        <h2 class="hero-title">อัครินทร์ สุขสม</h2>
+        <p class="hero-subtitle">ม.3 สายวิทย์-คณิต | มุ่งมั่นเข้า ม.4</p>
+        <p class="hero-text">สร้างเว็บไซต์ Portfolio สั้น กระชับ ตอบโจทย์ครูแนะแนวและกรรมการสัมภาษณ์ ใช้งานง่ายบนมือถือและแท็บเล็ต</p>
+        <ul class="list-bullet" style="margin-top:1.5rem;">
+          <li>แสดงผลงานเด่นในรูปแบบดิจิทัล</li>
+          <li>เนื้อหากระชับ อ่านเร็ว 1-2 นาที</li>
+          <li>ออกแบบให้รองรับทุกหน้าจอ</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <div class="hero-avatar">AK</div>
+        <p style="margin:1rem 0 0;font-weight:700;color:var(--text);">นักเรียน ม.3 สายวิทย์-คณิต</p>
+        <p style="margin:.5rem 0 0;color:var(--muted);">พร้อมนำเสนอเรื่องเรียนและผลงานที่พิสูจน์ทั้งทักษะวิชาการและความคิดสร้างสรรค์</p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2 class="section-title">About & Education</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge">ข้อมูลสั้น</div>
+          <ul class="list-bullet">
+            <li>มุ่งมั่นต่อยอดทางวิทยาศาสตร์และคณิตศาสตร์</li>
+            <li>ชอบเรียนรู้ผ่านการลงมือทำ</li>
+            <li>มีความรับผิดชอบและช่วยเหลือเพื่อน</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="badge">ประวัติการศึกษา</div>
+          <ul class="list-bullet">
+            <li>โรงเรียน: โรงเรียนสาธิตวิทยา</li>
+            <li>ชั้น: ม.3</li>
+            <li>เกรดเฉลี่ยรวม: 3.85</li>
+            <li>เกรดเฉลี่ยวิทย์-คณิต: 4.00</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;" class="card">
+        <div class="badge">ทัศนคติ</div>
+        <ul class="list-bullet">
+          <li>"เรียนรู้ทุกวันเพื่อเติบโตและทำได้มากกว่าเดิม"</li>
+          <li>เชื่อในการทำงานเป็นทีมและสื่อสารชัดเจน</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2 class="section-title">Skills</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="badge">ทักษะวิชาการ</div>
+          <div class="skill-item">
+            <div class="skill-name"><span>คณิตศาสตร์</span><span>90%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:90%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name"><span>วิทยาศาสตร์</span><span>88%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name"><span>ฟิสิกส์เบื้องต้น</span><span>84%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:84%"></div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="badge">Soft Skills</div>
+          <div class="skill-item">
+            <div class="skill-name"><span>การสื่อสาร</span><span>88%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:88%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name"><span>การวางแผน</span><span>85%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:85%"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-name"><span>การแก้ปัญหา</span><span>87%</span></div>
+            <div class="progress"><div class="progress-fill" style="width:87%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <h2 class="section-title">Awards & Projects</h2>
+      <div class="gallery">
+        <div class="gallery-card">
+          <div class="gallery-thumb">1</div>
+          <div>
+            <h3 style="margin:.1rem 0 .4rem;font-size:1rem;font-weight:700;">โครงงานวิทย์ "พลังงานทดแทน"</h3>
+            <p style="margin:0;color:var(--muted);">ศึกษาแผงโซลาร์เซลล์ ทำแผนที่ต้นทุน และนำเสนอหน้าชั้นเรียน</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-thumb">2</div>
+          <div>
+            <h3 style="margin:.1rem 0 .4rem;font-size:1rem;font-weight:700;">การแข่งขันคณิตศาสตร์</h3>
+            <p style="margin:0;color:var(--muted);">ได้รับรางวัลชมเชยในรายการคณิตศาสตร์ระดับโรงเรียน</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-thumb">3</div>
+          <div>
+            <h3 style="margin:.1rem 0 .4rem;font-size:1rem;font-weight:700;">งานวิจัยสั้น "น้ำสะอาด"</h3>
+            <p style="margin:0;color:var(--muted);">วิเคราะห์การกรองน้ำและสรุปผลเป็นรายงาน</p>
+          </div>
+        </div>
+        <div class="gallery-card">
+          <div class="gallery-thumb">4</div>
+          <div>
+            <h3 style="margin:.1rem 0 .4rem;font-size:1rem;font-weight:700;">กิจกรรมโค้ดดิ้ง</h3>
+            <p style="margin:0;color:var(--muted);">สร้างเว็บไซต์นำเสนอรายวิชาและทักษะดิจิทัล</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="activities" class="section">
+      <h2 class="section-title">Activities</h2>
+      <div class="activity-grid">
+        <div class="activity-card">
+          <strong>ร่วมค่าย STEM</strong>
+          <p style="margin:.75rem 0 0;color:var(--muted);font-size:.95rem;">ฝึกทำโครงงานและพรีเซนต์ผลงานเป็นทีม</p>
+        </div>
+        <div class="activity-card">
+          <strong>จิตอาสาเก็บขยะ</strong>
+          <p style="margin:.75rem 0 0;color:var(--muted);font-size:.95rem;">ร่วมกิจกรรมสร้างความสะอาดในชุมชน</p>
+        </div>
+        <div class="activity-card">
+          <strong>ชมรมห้องสมุด</strong>
+          <p style="margin:.75rem 0 0;color:var(--muted);font-size:.95rem;">จัดกิจกรรมอ่านหนังสือและช่วยสอนน้อง</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span style="font-weight:700;color:var(--text);">อีเมล</span>
+          <span>akarin.student@example.com</span>
+        </div>
+        <div class="contact-item">
+          <span style="font-weight:700;color:var(--text);">โทรศัพท์</span>
+          <span>081-234-5678</span>
+        </div>
+        <div class="contact-item">
+          <span style="font-weight:700;color:var(--text);">สายการเรียนที่ต้องการ</span>
+          <span>วิทย์-คณิต</span>
+        </div>
+        <div class="contact-item">
+          <span style="font-weight:700;color:var(--text);">ลิงก์เพิ่มเติม</span>
+          <span>QR Code / Link ของผลงาน</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p>Portfolio นี้ออกแบบให้เหมาะกับการอ่านสั้น กระชับ และใช้งานบนมือถือได้ดี</p>
+  </footer>
+</body>
+</html>
